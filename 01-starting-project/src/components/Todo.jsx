@@ -9,6 +9,10 @@ function Todo(props) { // es necesario que los componentes empiecen con una Mayu
         setModalIsOpen(true);
         console.log(props.title);
     }
+
+    function closeModalHander() {
+        setModalIsOpen(false);
+    }
     // los corchetes {props.title} son para abrir una expresión Js
     return (
         <div className='card'>
@@ -16,8 +20,8 @@ function Todo(props) { // es necesario que los componentes empiecen con una Mayu
             <div className='actions'>
                 <button className='btn' onClick={deleteHandler}>Delete</button>
             </div>
-            { modalIsOpen && <Modal />}
-            { modalIsOpen && <Backdrop />}
+            { modalIsOpen && <Modal onCancel={closeModalHander} onConfirm={closeModalHander}/>}
+            { modalIsOpen && <Backdrop onCancel={closeModalHander} />}
         </div>
     );
 }
