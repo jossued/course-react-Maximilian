@@ -1,6 +1,9 @@
 import NewMeetupForm from "../components/meetups/NewMeetupForm";
+import { useHistory } from "react-router-dom";
 
 function NewMeetupPage() {
+    const history = useHistory();
+
     function addMeetupHandler(meetupData) {
         const firebaseDatabaseURL = 'https://react-course-meetup-app-default-rtdb.firebaseio.com/';
         const meetupTableURL = firebaseDatabaseURL + 'meetup.json';
@@ -10,7 +13,11 @@ function NewMeetupPage() {
             headers: {
                 'Content-Type': 'application/json'
             }
-        });
+        }).then(
+            () => {
+                history.replace('/');
+            }
+        );
     }
     return <section>
         <h1>Add New Meetup</h1>
