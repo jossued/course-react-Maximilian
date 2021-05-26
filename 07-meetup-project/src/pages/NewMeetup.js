@@ -1,12 +1,12 @@
 import NewMeetupForm from "../components/meetups/NewMeetupForm";
 import { useHistory } from "react-router-dom";
+import { FIREBASE_CONFIG } from "../constants/firebase";
 
 function NewMeetupPage() {
     const history = useHistory();
 
     function addMeetupHandler(meetupData) {
-        const firebaseDatabaseURL = 'https://react-course-meetup-app-default-rtdb.firebaseio.com/';
-        const meetupTableURL = firebaseDatabaseURL + 'meetup.json';
+        const meetupTableURL = FIREBASE_CONFIG.firebaseDatabaseURL + 'meetup.json';
         fetch(meetupTableURL, {
             method: 'POST',
             body: JSON.stringify(meetupData),
