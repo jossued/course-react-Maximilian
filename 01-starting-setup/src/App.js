@@ -1,4 +1,4 @@
-import ExpenseItem from './components/ExpenseItem';
+import Expenses from './components/Expenses';
 
 function App() {
   // es un estandar que los componentes empiecen con mayus
@@ -34,16 +34,9 @@ function App() {
   return (
     <div>
       <h2>Let's get started!</h2>
-      {expenses.map(
-        (expense) => {
-          return <
-            ExpenseItem
-            title={expense.title}
-            date={expense.date}
-            amount={expense.amount}
-          />
-        }
-      )}
+      <div className="expenses">
+        <Expenses expenses={expenses}/>
+      </div>
     </div>
   );
 }
